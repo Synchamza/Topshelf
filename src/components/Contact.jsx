@@ -37,6 +37,8 @@ function Contact() {
         name: name,
         lastName: lastName,
       },
+
+
     ],
     subject: `Thankyou for Contacting (Delta Solution) -  ${name} ${lastName} `,
     htmlContent:
