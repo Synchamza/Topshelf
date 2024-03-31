@@ -181,7 +181,7 @@ function Contact() {
                 </div>
                 <div className="flex flex-col  mt-2">
                   <label for="tel" className={`${styles.paragraph} `}>
-                    Enter Your Subject *
+                    Enter Your Message *
                   </label>
 
                   <textarea
