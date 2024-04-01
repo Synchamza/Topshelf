@@ -1,14 +1,12 @@
 import React, { useRef, useState } from "react";
 import styles from "../style";
+// import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Pages/Contact.css";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
-
-// import dotenv from 'dotenv'
-// import 'dotenv/config'
-// dotenv.config()
+import "../Pages/Contact.css";
 
 function Contact() {
   const form = useRef();
@@ -19,11 +17,9 @@ function Contact() {
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
   const [capVal, setCapVal] = useState(null);
-  // const env = process.env
   const myVariable = import.meta.env.VITE_SITE_KEY;
   const url = "https://api.sendinblue.com/v3/smtp/email";
   const apiKey = import.meta.env.VITE_API_KEY;
-  // console.log(myVariable);
 
   const data1 = {
     sender: {
@@ -35,7 +31,7 @@ function Contact() {
       {
         name: name,
         // email: "info@deltasolution.pk",
-        email: "synchamza7@gmail.com", // delta ki
+        email: "iamstarc7@gmail.com", // delta ki
       },
     ],
     subject: `${name} ${lastName} From ${company} want's to talk to you`,
@@ -47,9 +43,9 @@ function Contact() {
 
   const data = {
     sender: {
-      name: "Delta Solution",
+      name: "Top Shelf Brands",
       // email: "info@deltasolution.pk",
-      email: "synchamza7@gmail.com", // email according to company name
+      email: "iamstarc7@gmail.com", // delta 
     },
     to: [
       {
@@ -57,16 +53,15 @@ function Contact() {
         name: name,
         lastName: lastName,
       },
-
-
     ],
-    subject: `Thankyou for Contacting (Delta Solution) -  ${name} ${lastName} `,
+    subject: `Thankyou for Contacting (Top Shelf Brands) -  ${name} ${lastName} `,
     htmlContent:
       "<p><p>Greetings " +
       name +
+      " " +
       lastName +
       '!<br><br><span style="font-size: 14pt;"><strong>' +
-      "</strong></span>Team Delta thanks for your trust on us and would love to see you action. <br><br>Regards,<br>Delta Solution</p></p>",
+      "</strong></span>Team Delta thanks for your trust on us and would love to see you action. <br><br>Regards,<br>Top Shelf Brands</p></p>",
   };
 
   const headers = {
@@ -87,7 +82,6 @@ function Contact() {
       });
   };
 
-
   const sendEmail1 = async (e) => {
 
     const ali = await axios
@@ -103,13 +97,11 @@ function Contact() {
         // console.log(error);
       });
   };
-
   const twoFucntionForEmail = (e) => {
     e.preventDefault();
     sendEmail();
     sendEmail1();
   };
-
   return (
     <>
       <div className="  flex items-top justify-between min-h-[500px] sm:items-center sm:pt-0 sm:pb-0 w-[100%]]">
@@ -122,7 +114,8 @@ function Contact() {
                     className={`${styles.heading3} text-3xl sm:text-4xl  font-extrabold tracking-tight`}
                   >
                     Technical Support
-                  </h1>
+
+                    </h1>
                   <p className={`${styles.paragraph}  mt-2 mb-6 `}>
                     Found a persistent bug, or need help setting a new team
                     member up? Can’t crack a feature? Let us know!
@@ -132,7 +125,8 @@ function Contact() {
                   <h1
                     className={`${styles.heading3} text-3xl sm:text-4xl  font-extrabold tracking-tight`}
                   >
-                    General chat
+
+                  General chat
                   </h1>
                   <p className={`${styles.paragraph}  mt-2 mb-6 `}>
                     Billing issues, customizations, plan changes--anything that
@@ -152,103 +146,113 @@ function Contact() {
                 </div>
               </div>
 
-              <form
-                className=" flex flex-col justify-center color rounded-lg p-[0.75rem] box-shadow"
-                ref={form}
-              >
-                <div className="w-full flex gap-8">
-                  <div className="flex flex-col w-[47%] ">
-                    <label htmlFor="name" className={`${styles.paragraph}`}>
-                      Full Name *
-                    </label>
-                    <input
-                      type="name"
-                      name="name"
-                      id="name"
-                      className="cursor-default w-100 mt-2 py-3 px-3 rounded-lg  z-[1000] text-gray-800 font-semibold  colorInput"
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
-                  <div className="flex flex-col w-[45%]">
-                    <label htmlFor="name" className={`${styles.paragraph} `}>
-                      Last Name *
-                    </label>
-                    <input
-                      type="name"
-                      name="LastName"
-                      id="LastName"
-                      className="w-100 mt-2 cursor-default py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput"
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                  </div>
-                </div>
 
-                <div className="flex flex-col mt-2">
-                  <label htmlFor="email" className={`${styles.paragraph} `}>
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput "
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="flex flex-col mt-2">
-                  <label htmlFor="email" className={`${styles.paragraph} `}>
-                    Company Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="companyName"
-                    id="companyName"
-                    className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg  z-[1000] text-gray-800 font-semibold  colorInput"
-                    onChange={(e) => setCompany(e.target.value)}
-                  />
-                </div>
-
-                <div className="flex flex-col mt-2">
-                  <label htmlFor="tel" className={`${styles.paragraph} `}>
-                    Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="number"
-                    id="tel"
-                    className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput"
-                    onChange={(e) => setNumber(e.target.value)}
-                  />
-                </div>
-                <div className="flex flex-col  mt-2">
-                  <label for="tel" className={`${styles.paragraph} `}>
-                    Enter Your Message *
-                  </label>
-
-                  <textarea
-                    onChange={(e) => setMessage(e.target.value)}
-                    name="message"
-                    id="message"
-                    cols="0"
-                    rows="5"
-                    className="w-100 mt-2 py-3 px-3 rounded-lg cursor-default  text-gray-800 font-semibold  colorInput "
-                  ></textarea>
-                </div>
-                <ReCAPTCHA
-                  className="flex justify-center mt-2 bg-white rounded-lg"
-                  sitekey={myVariable}
-                  onChange={(val) => setCapVal(val)}
-                />
-                <button
-                  disabled={!capVal}
-                  type="submit"
-                  className={`py-2 mt-2 bg-blue-gradient 
-    font-poppins font-medium text-[18px] text-primary outline-none rounded-[12px] ${styles}`}
-                  onClick={sendEmail}
+              <div className="navContainer">
+                <form
+                  // onSubmit={(e) => twoFucntionForEmail(e)}
+                  className="  flex flex-col justify-center color rounded-lg p-[0.75rem]   box-shadow  "
+                  ref={form}
                 >
-                  <span>Send</span>
-                </button>
-              </form>
+                  <div className="w-full flex gap-8">
+                    <div className="flex flex-col w-[47%] ">
+                      <label htmlFor="name" className={`${styles.paragraph} `}>
+                        Full Name *
+                      </label>
+                      <input
+                        type="name"
+                        name="name"
+                        id="name"
+                        className="cursor-default w-100 mt-2 py-3 px-3 rounded-lg  z-[1000] text-gray-800 font-semibold  colorInput"
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+                    <div className="flex flex-col w-[45%]">
+                      <label htmlFor="name" className={`${styles.paragraph} `}>
+                        Last Name *
+                      </label>
+                      <input
+                        type="name"
+                        name="LastName"
+                        id="LastName"
+                        className="w-100 mt-2 cursor-default py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput"
+
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col mt-2">
+                    <label htmlFor="email" className={`${styles.paragraph} `}>
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput "
+
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col mt-2">
+                    <label htmlFor="email" className={`${styles.paragraph} `}>
+                      Company Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="companyName"
+                      id="companyName"
+                      className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg  z-[1000] text-gray-800 font-semibold  colorInput"
+
+                      onChange={(e) => setCompany(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="flex flex-col mt-2">
+                    <label htmlFor="tel" className={`${styles.paragraph} `}>
+                      Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="number"
+                      id="tel"
+                      className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput"
+
+                      onChange={(e) => setNumber(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col  mt-2">
+                    <label for="tel" className={`${styles.paragraph} `}>
+                      Enter Your Message *
+                    </label>
+
+                    <textarea
+                      onChange={(e) => setMessage(e.target.value)}
+                      name="message"
+                      id="message"
+                      cols="0"
+                      rows="5"
+                      className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]   text-gray-800 font-semibold  colorInput "
+
+                    ></textarea>
+                  </div>
+                  <ReCAPTCHA
+                    className="flex justify-center mt-2  rounded-lg"
+                    sitekey={myVariable}
+                    onChange={(val) => setCapVal(val)}
+                  />
+                  <button
+                    disabled={!capVal}
+                    type="button"
+                    className={`py-2 mt-2 bg-blue-gradient 
+    font-poppins font-medium text-[18px] text-primary outline-none rounded-[12px] ${styles}`}
+                    // onClick={sendEmail}
+                    onClick={(e) => twoFucntionForEmail(e)}
+                  >
+                    <span>Send</span>
+                  </button>
+                </form>
+              </div>
 
               <ToastContainer
                 style={{ marginTop: "11vh" }}

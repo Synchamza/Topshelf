@@ -13,7 +13,7 @@ const Navbar = () => {
       <Link to="/#home" className="">
         <img
           src={logo}
-          alt="Delta-Management"
+          alt="Top Shelf Brands"
           className="w-[248px] h-[64px] cursor-pointer "
         />
       </Link>
