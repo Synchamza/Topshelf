@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <Link to="/#home" className="">
         <img
-          src="https://res.cloudinary.com/doetxxo94/image/upload/v1711997833/TopShelfBrands/snghgp7zg07r4z80j7ug.svg"
+          src={logo}
           alt="Top Shelf Brands"
           className="w-[248px] h-[64px] cursor-pointer "
         />
