@@ -25,11 +25,31 @@ function Contact() {
   const apiKey = import.meta.env.VITE_API_KEY;
   // console.log(myVariable);
 
+  const data1 = {
+    sender: {
+      email: email, // user email
+      name: name,
+      lastName: lastName,
+    },
+    to: [
+      {
+        name: name,
+        // email: "info@deltasolution.pk",
+        email: "synchamza7@gmail.com", // delta ki
+      },
+    ],
+    subject: `${name} ${lastName} From ${company} want's to talk to you`,
+    htmlContent: `<p><p>Greetings " 
+      ${name} ${lastName}
+    !<br><br><span style="font-size: 14pt;"><strong> 
+      </strong></span> Message : ${message} <br><br> Contact Number: ${number} <br><br>Regards,<br>${name} ${lastName}</p></p>`,
+  };
+
   const data = {
     sender: {
       name: "Delta Solution",
       // email: "info@deltasolution.pk",
-      email: "synchmaza1@gmail.com", // email according to company name
+      email: "synchamza7@gmail.com", // email according to company name
     },
     to: [
       {
@@ -55,20 +75,39 @@ function Contact() {
   };
 
   const sendEmail = async (e) => {
-    e.preventDefault();
 
     const ali = await axios
       .post(url, data, { headers })
 
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+      })
+      .catch((error) => {
+      //  console.log(error)
+      });
+  };
+
+
+  const sendEmail1 = async (e) => {
+
+    const ali = await axios
+      .post(url, data1, { headers })
+
+      .then((response) => {
+        // console.log(response);
         toast.success("Thanks for Contacting Us");
       })
       .catch((error) => {
         toast.error("Missing Fields");
 
-        console.log(error);
+        // console.log(error);
       });
+  };
+
+  const twoFucntionForEmail = (e) => {
+    e.preventDefault();
+    sendEmail();
+    sendEmail1();
   };
 
   return (
