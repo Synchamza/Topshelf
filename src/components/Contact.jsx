@@ -156,7 +156,7 @@ function Contact() {
                   <div className="w-full flex gap-8">
                     <div className="flex flex-col w-[47%] ">
                       <label htmlFor="name" className={`${styles.paragraph} `}>
-                        Full Name *
+                        First Name *
                       </label>
                       <input
                         type="name"
@@ -209,38 +209,36 @@ function Contact() {
                   </div>
 
                   <div className="flex flex-col mt-2">
-                    <label htmlFor="tel" className={`${styles.paragraph} `}>
-                      Number *
-                    </label>
-                    <input
-                      type="tel"
-                      name="number"
-                      id="tel"
-                      className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput"
-
-                      onChange={(e) => setNumber(e.target.value)}
-                    />
-                  </div>
-                  <div className="flex flex-col  mt-2">
-                    <label for="tel" className={`${styles.paragraph} `}>
-                      Enter Your Message *
-                    </label>
-
-                    <textarea
-                      onChange={(e) => setMessage(e.target.value)}
-                      name="message"
-                      id="message"
-                      cols="0"
-                      rows="5"
-                      className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]   text-gray-800 font-semibold  colorInput "
-
-                    ></textarea>
-                  </div>
-                  <ReCAPTCHA
-                    className="flex justify-center mt-2  rounded-lg"
-                    sitekey={myVariable}
-                    onChange={(val) => setCapVal(val)}
+                  <label htmlFor="tel" className={`${styles.paragraph} `}>
+                    Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="number"
+                    id="tel"
+                    className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg z-[1000]  text-gray-800 font-semibold  colorInput"
+                    onChange={(e) => setNumber(e.target.value)}
                   />
+                </div>
+                <div className="flex flex-col  mt-2">
+                  <label for="tel" className={`${styles.paragraph} `}>
+                    Enter Your Message *
+                  </label>
+
+                  <textarea
+                    onChange={(e) => setMessage(e.target.value)}
+                    name="message"
+                    id="message"
+                    cols="0"
+                    rows="5"
+                    className="w-100 cursor-default mt-2 py-3 px-3 rounded-lg  z-[1004] text-gray-800 font-semibold  colorInput outline-none"
+                  ></textarea>
+                </div>
+                <ReCAPTCHA
+                  className="flex justify-center mt-2 bg-white rounded-lg"
+                  sitekey={myVariable}
+                  onChange={(val) => setCapVal(val)}
+                />
                   <button
                     disabled={!capVal}
                     type="button"
